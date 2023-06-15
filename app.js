@@ -26,54 +26,88 @@ form.addEventListener('submit', (e) => {
     const errorYear = document.querySelector('#errorYear');
 
 
-    if (!regexDay.test(day)) {
+    // Validating the inputs
+
+    if (day === '') {
+        errorDay.textContent = 'This field is required';
         errorDay.classList.remove('inactive');
+    } else if (!regexDay.test(day)) {
+        errorDay.textContent = 'Must be a valid date';
+        errorDay.classList.remove('inactive');
+    } else {
+        errorDay.classList.add('inactive');
     }
 
-    if (!regexMonth.test(month)) {
+    if (month === '') {
+        errorMonth.textContent = 'This field is required';
         errorMonth.classList.remove('inactive');
+    } else if (!regexMonth.test(month)) {
+        errorMonth.textContent = 'Must be a valid month';
+        errorMonth.classList.remove('inactive');
+    } else {
+        errorMonth.classList.add('inactive');
     }
 
-    if (!regexYear.test(year)) {
+    if (year === '') {
+        errorYear.textContent = 'This field is required';
         errorYear.classList.remove('inactive');
+    } else if (!regexYear.test(year) || year >= currentDate.getFullYear()) {
+        errorYear.textContent = 'Must be a in the past';
+        errorYear.classList.remove('inactive');
+    } else {
+        errorYear.classList.add('inactive')
     }
+
+    // Making the inputs match the regex
 
     if (regexDay.test(day) && regexMonth.test(month) && (regexYear.test(year) && year < currentDate.getFullYear())) {
         console.log('success');
         // Proceed with further processing or validation
 
-        const birthDate = new Date(year, month - 1, day);
-        // const currentDate = new Date();
+        const maxDay = new Date(year, month - 1, 0).getDate();
+        if (day > maxDay) {
+            // errorDay.textContent = 'Invalid day for the selected month';
+            // errorDay.classList.remove('inactive');
+            errorForm.classList.remove('inactive');
+        } else {
+            errorForm.classList.add('inactive');
 
-        let ageYears = currentDate.getFullYear() - birthDate.getFullYear();
-        let ageMonths = currentDate.getMonth() - birthDate.getMonth();
-        let ageDays = currentDate.getDate() - birthDate.getDate();
+            const birthDate = new Date(year, month - 1, day);
+            // const currentDate = new Date();
 
 
-        // Check if current day is smaller than birth day
-        if (ageDays < 0) {
-            // Calculate the number of days in the previous month
-            const lastMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0);
-            const daysInLastMonth = lastMonthDate.getDate();
-            ageDays += daysInLastMonth;
-            ageMonths--;
+            // ...
+
+            let ageYears = currentDate.getFullYear() - birthDate.getFullYear();
+            let ageMonths = currentDate.getMonth() - birthDate.getMonth();
+            let ageDays = currentDate.getDate() - birthDate.getDate();
+
+            // Check if current day is smaller than birth day
+            if (ageDays < 0) {
+                // Calculate the number of days in the previous month
+                const lastMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+                const daysInLastMonth = new Date(lastMonthDate.getFullYear(), lastMonthDate.getMonth() + 1, 0).getDate();
+                ageDays += daysInLastMonth;
+                ageMonths--;
+
+                // Adjust the birth month
+                birthDate.setMonth(birthDate.getMonth() + 1);
+            }
+
+            // Check if current month is smaller than birth month
+            if (ageMonths < 0) {
+                ageMonths += 12;
+                ageYears--;
+            }
+
+            console.log(`Age: ${ageYears} years, ${ageMonths} months, ${ageDays} days`);
         }
-
-        // Check if current month is smaller than birth month
-        if (ageMonths < 0) {
-            ageMonths += 12;
-            ageYears--;
-        }
-
-        console.log(`Age: ${ageYears} years, ${ageMonths} months, ${ageDays} days`);
 
     } else {
         console.log('Invalid input. Please enter two digits (e.g., 01, 25).');
         // Display an error message or take appropriate action
 
         errorForm.classList.remove('inactive');
-
-
     }
 
 })

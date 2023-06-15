@@ -1,63 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="styles.css">
-  
-  <title>Frontend Mentor | Age calculator app</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Age calculator app</title>
 
-  <main class="main-container">
-    <div class="main-container__content">
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="main-container__content">
+        <form id="form" class="date-container">
+          <div class="date-container__content">
+            <div>
+              <label class="date-container__label" for="day">Day</label>
+              <input
+                class="date-container__input"
+                type="text"
+                name="day"
+                id="day"
+                maxlength="2"
+                placeholder="DD"
+              />
+              <small id="errorDay" class="inactive"></small>
+            </div>
+            <div>
+              <label class="date-container__label" for="month">Month</label>
+              <input
+                class="date-container__input"
+                type="text"
+                name="month"
+                maxlength="2"
+                id="month"
+                placeholder="MM"
+              />
+              <small id="errorMonth" class="inactive"></small>
+            </div>
+            <div>
+              <label class="date-container__label" for="year">Year</label>
+              <input
+                class="date-container__input"
+                type="text"
+                name="year"
+                maxlength="4"
+                id="year"
+                placeholder="YYYY"
+              />
+              <small id="errorYear" class="inactive"
+                >Must be a in the past</small
+              >
+            </div>
 
-      <form id="form" class="date-container">
-        <div>
-          <label class="date-container__label" for="day">Day</label>
-          <input class="date-container__input" type="text" name="day" id="day" maxlength="2" placeholder="DD">
-          <small id="errorDay" class="inactive">Must be a valid date</small>
-        </div>
-        <div>
-          <label class="date-container__label" for="month">Month</label>
-          <input class="date-container__input" type="text" name="month" maxlength="2" id="month" placeholder="MM">
-          <small id="errorMonth" class="inactive">Must be a valid month</small>
-        </div>
-        <div>
-          <label class="date-container__label" for="year">Year</label>
-          <input class="date-container__input" type="text" name="year"  maxlength="4" id="year" placeholder="YYYY">
-          <small id="errorYear" class="inactive">Must be a in the past</small>
-        </div>
+            <small id="errorForm" class="inactive">Must be a valid date</small>
+          </div>
+          
+          <div class="btn-container">
+            <button type="button" class="btn"><img src="assets/images/icon-arrow.svg" alt=""></button>
+          </div>
+        </form>
 
-        <small id="errorForm" class="inactive">Must be a valid date</small>
-
-        <button type="btn">Calcula tu edad</button>
-        
-      </form>
-
-      <div class="calc-container">
-        <div class="calc-container__body">
-          <p class="calc-container__paragraph"><span id="calculatedYear">--</span> years</p>
-          <p class="calc-container__paragraph"><span id="calculatedMonth">--</span> months</p>
-          <p class="calc-container__paragraph"><span id="calculatedDay">--</span> days</p>
+        <div class="calc-container">
+          <div class="calc-container__body">
+            <p class="calc-container__paragraph">
+              <span id="calculatedYear">--</span> years
+            </p>
+            <p class="calc-container__paragraph">
+              <span id="calculatedMonth">--</span> months
+            </p>
+            <p class="calc-container__paragraph">
+              <span id="calculatedDay">--</span> days
+            </p>
+          </div>
         </div>
       </div>
+    </main>
 
-    </div>
-  </main>
-
-  
-  <script src="app.js"></script>
-  <!-- <div class="attribution">
+    <script src="app.js"></script>
+    <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
-</body>
+  </body>
 </html>
