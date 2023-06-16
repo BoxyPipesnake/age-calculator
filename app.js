@@ -32,7 +32,7 @@ form.addEventListener('submit', (e) => {
         errorDay.textContent = 'This field is required';
         errorDay.classList.remove('inactive');
     } else if (!regexDay.test(day)) {
-        errorDay.textContent = 'Must be a valid date';
+        errorDay.textContent = 'Must be a valid day';
         errorDay.classList.remove('inactive');
     } else {
         errorDay.classList.add('inactive');
@@ -106,6 +106,7 @@ form.addEventListener('submit', (e) => {
     } else {
         console.log('Invalid input. Please enter two digits (e.g., 01, 25).');
         // Display an error message or take appropriate action
+
 
         errorForm.classList.remove('inactive');
     }
