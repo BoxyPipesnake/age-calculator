@@ -102,6 +102,12 @@ body {
     padding: 0.7rem 0.5rem;
 }
 
+.date-container__input:focus {
+    outline-color: var(--purple);
+    outline-style: solid;
+    outline-width: 1px;
+}
+
 .btn-container {
     height: 1px;
     display: flex;
@@ -126,6 +132,11 @@ body {
     border-style: none;
     background-color: var(--purple);
 }
+
+.btn-container button img:hover {
+    background-color: var(--offBlack);
+}
+
 
 /* Fin del form styles */
 
@@ -163,7 +174,7 @@ body {
 
 
     .date-container__label {
-        font-size: 0.72rem;
+        font-size: 0.75rem;
     }
 
     .date-container__input {
@@ -186,7 +197,7 @@ body {
 
     .btn-container button img {
         width: 75px;
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
 
     /* Calc container */
