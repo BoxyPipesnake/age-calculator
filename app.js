@@ -101,6 +101,9 @@ form.addEventListener('submit', (e) => {
             }
 
             console.log(`Age: ${ageYears} years, ${ageMonths} months, ${ageDays} days`);
+            calculatedYear.textContent = ageYears;
+            calculatedMonth.textContent = ageMonths;
+            calculatedDay.textContent = ageDays;
         }
 
     } else {

@@ -153,11 +153,12 @@ body {
     font-weight: 800;
     font-style: italic;
     display: flex;
+    gap: 0.3rem;
 }
 
-.calc-container__paragraph span {
+/* .calc-container__paragraph span {
     letter-spacing: 10px;
-}
+} */
 
 
 @media (min-width: 768px) {
