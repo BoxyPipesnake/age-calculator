@@ -38,6 +38,14 @@ small {
     display: none;
 }
 
+.errorOutline {
+    outline-color: var(--lightRed);
+    outline-style: solid;
+    outline-width: 1px;
+}
+
+
+
 .calc-container--purple {
     color: var(--purple);
 }
@@ -155,11 +163,6 @@ body {
     display: flex;
     gap: 0.3rem;
 }
-
-/* .calc-container__paragraph span {
-    letter-spacing: 10px;
-} */
-
 
 @media (min-width: 768px) {
     .main-container {

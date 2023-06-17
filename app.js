@@ -1,7 +1,11 @@
 const form = document.querySelector('#form');
 
+const inputs = document.querySelectorAll('.date-container__input');
+const labels = document.querySelectorAll('.date-container__label');
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+
 
   const day = document.querySelector('#day').value;
   const month = document.querySelector('#month').value;
@@ -82,5 +86,17 @@ form.addEventListener('submit', (e) => {
   } else {
     console.log('Invalid input. Please enter valid values.');
     errorForm.classList.remove('inactive');
+    
+
+    labels.forEach((label)=> {
+        label.style.color = 'var(--lightRed)';
+    })
+
+    inputs.forEach((input)=> {
+        input.classList.add('errorOutline');
+    })
+
+
   }
+
 });
